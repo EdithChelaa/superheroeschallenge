@@ -40,7 +40,7 @@ class Power(db.Model, SerializerMixin):
     # Add serialization rules
     serialize_rules = ('-hero_powers',)
 
-    # validation for description
+    # Add validation for description
     @validates('description')
     def validate_description(self, key, description):
         if len(description) < 20:
@@ -63,7 +63,7 @@ class HeroPower(db.Model, SerializerMixin):
     hero = relationship('Hero', back_populates='hero_powers')
     power = relationship('Power', back_populates='hero_powers')
 
-    #  serialization rules
+    # Add serialization rules
     serialize_rules = ('-hero', '-power',)
 
     # Add validation for strength
